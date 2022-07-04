@@ -5,9 +5,9 @@ const newQuoteButton = document.querySelector('#new-quote')
 
 // Populate the UI with random quote
 function populateUI(){
-   let randomNumber = Math.floor(Math.random() * 1500);
-   quoteText.textContent =  apiQuotes[randomNumber].text;
-   quoteAuthor.textContent =  apiQuotes[randomNumber].author;
+   let quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
+   quoteText.textContent =  quote.text;
+   quoteAuthor.textContent =  quote.author;
 }
 
 // API data
