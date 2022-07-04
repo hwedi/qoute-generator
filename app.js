@@ -5,7 +5,7 @@ const newQuoteButton = document.querySelector('#new-quote')
 
 // Rendering fetched data
 function renderQuote(){
-   let randomNumber = Math.floor(Math.random() * 120);
+   let randomNumber = Math.floor(Math.random() * 1500);
    quoteText.textContent =  apiQuotes[randomNumber].text;
    quoteAuthor.textContent =  apiQuotes[randomNumber].author;
 }
