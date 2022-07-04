@@ -3,8 +3,8 @@ const quoteText = document.querySelector('#quote')
 const quoteAuthor = document.querySelector('#author');
 const newQuoteButton = document.querySelector('#new-quote')
 
-// Rendering fetched data
-function renderQuote(){
+// Populate the UI with random quote
+function populateUI(){
    let randomNumber = Math.floor(Math.random() * 1500);
    quoteText.textContent =  apiQuotes[randomNumber].text;
    quoteAuthor.textContent =  apiQuotes[randomNumber].author;
@@ -19,16 +19,18 @@ async function getQuotes(url) {
     try {
     const response = await fetch(url);
     apiQuotes = await response.json();
-    renderQuote();
+    populateUI();
     } catch(error) {
         console.log(`Error: Can't retrieve data`)
         console.log(`${error}`)
     }
 }
 
-// Rendering new quote 
+// Populating new quote 
 newQuoteButton.addEventListener('click', () => {
-    renderQuote();
+    populateUI();
 })
 
+// On load
 getQuotes(QUOTES_API);
+populateUI();
