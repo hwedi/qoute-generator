@@ -5,9 +5,11 @@ const newQuoteButton = document.querySelector('#new-quote')
 
 // Populate the UI with random quote
 function populateUI(){
+   // Store a random quote from apiQuotes
    let quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
-   quoteText.textContent =  quote.text;
-   quoteAuthor.textContent =  quote.author;
+   quoteText.textContent = quote.text;
+   // Replace the nullish author field with 'Unknown'
+   quoteAuthor.textContent = !quote.author ? 'Unknown' : quote.author;
 }
 
 // API data
