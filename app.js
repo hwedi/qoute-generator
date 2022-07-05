@@ -1,7 +1,8 @@
 // DOM elements
-const quoteText = document.querySelector('#quote')
-const quoteAuthor = document.querySelector('#author');
-const newQuoteButton = document.querySelector('#new-quote')
+const quoteText = document.getElementById('quote');
+const quoteAuthor = document.getElementById('author');
+const newQuoteButton = document.getElementById('new-quote');
+const tweet = document.getElementById('tweet');
 
 // Populate the UI with random quote
 function populateUI(){
@@ -14,9 +15,15 @@ function populateUI(){
    quoteAuthor.textContent = !quote.author ? 'Unknown' : quote.author;
 }
 
+// Tweet quote
+function tweetQuote () {
+    const tweetURL = `https://twitter.com/intent/tweet?text=${quoteText.textContent} -${quoteAuthor.textContent}`;
+    window.open(tweetURL, '_blank');
+}
+
 // API data
-const QUOTES_API = 'https://type.fit/api/quotes'
-let apiQuotes = []
+const QUOTES_API = 'https://type.fit/api/quotes';
+let apiQuotes = [];
 
 // API handling
 async function getQuotes(url) {
@@ -25,15 +32,17 @@ async function getQuotes(url) {
     apiQuotes = await response.json();
     populateUI();
     } catch(error) {
-        console.log(`Error: Can't retrieve data`)
-        console.log(`${error}`)
+        console.log(`Error: Can't retrieve data`);
+        console.log(`${error}`);
     }
 }
 
+// Event listeners
 // Populating new quote 
-newQuoteButton.addEventListener('click', () => {
-    populateUI();
-})
+newQuoteButton.addEventListener('click', populateUI);
+// Tweet quote
+tweet.addEventListener('click', tweetQuote)
+
 
 // On load
 getQuotes(QUOTES_API);
