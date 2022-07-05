@@ -7,6 +7,8 @@ const newQuoteButton = document.querySelector('#new-quote')
 function populateUI(){
    // Store a random quote from apiQuotes
    let quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
+   // Apply small font size if the quote is lengthy
+   quote.text.length > 50 ? quoteText.classList.add('long-quote') : quoteText.classList.remove('long-quote') 
    quoteText.textContent = quote.text;
    // Replace the nullish author field with 'Unknown'
    quoteAuthor.textContent = !quote.author ? 'Unknown' : quote.author;
