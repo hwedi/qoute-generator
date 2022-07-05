@@ -32,8 +32,6 @@
     animation: box-shadow-blue 0.5s forwards;
 }
 
-
-
 html {
     box-sizing: border-box;
 }
@@ -77,7 +75,6 @@ body {
 
 }
 
-
 .long-quote {
     font-size: 2rem;
 }
@@ -86,8 +83,6 @@ body {
     font-size: 1.5rem;
     font-style: italic;
 }
-
-
 
 /* Media Query: Tablet or Smaller */
 @media screen and (max-width: 1000px) {
